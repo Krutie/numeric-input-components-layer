@@ -7,7 +7,6 @@ export default function ({ min, max, quantity }) {
     const increment = () => {
         quantity.value++;
         _emit('update:modelValue', quantity.value)
-
     };
     const decrement = () => {
         quantity.value--;
