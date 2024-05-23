@@ -1,20 +1,24 @@
 <template>
-    <div class="example">
-        <span class="block pb-2 font-mono">SFC components</span>
-        <kbd class="block"> quantity: {{ quantity }} </kbd>
-        <div class="grid grid-rows-2 grid-flow-col gap-0 p-2 text-teal text-center w-max my-0 mx-auto">
+    <div class="p-4 text-center flex items-center justify-center flex-col text-sm">
+        <span class="pb-2 font-bold">Reactive Input as an SFC</span>
+        <UiPre> quantity: ref({{ quantity }}) </UiPre>
+        <div class="grid grid-flow-col p-2 mx-auto">
             <input type="number"
-                   class="row-span-2 p-4 w-14 text-gray-700 rounded-tl-lg rounded-bl-lg"
+                   class="row-span-2 p-4 w-16 bg-zinc-100 rounded-tl-lg rounded-bl-lg"
                    v-model="quantity" />
             <button type="button"
-                    class="up col-span-2 w-6 bg-orange-500 text-gray-50 rounded-tr-lg opacity-80 hover:opacity-100"
+                    class="px-0.5 bg-orange-500 text-gray-50 rounded-tr-lg hover:opacity-80"
                     @click="increment">
-                <ri-arrow-up-s-line class="opacity-50" />
+                <Icon icon="ri-arrow-up-s-line"
+                      :ssr="true"
+                      class="text-xl" />
             </button>
             <button type="button"
-                    class="down col-span-2 w-6 bg-orange-500 text-gray-50 rounded-br-lg opacity-80 hover:opacity-100"
+                    class="px-0.5 bg-orange-500 text-gray-50 rounded-br-lg hover:opacity-80"
                     @click="decrement">
-                <ri-arrow-down-s-line class="opacity-50" />
+                <Icon icon="ri-arrow-down-s-line"
+                      :ssr="true"
+                      class="text-xl" />
             </button>
         </div>
     </div>
@@ -22,7 +26,12 @@
 
 <script>
 import { ref } from "vue";
+import { Icon } from '@iconify/vue';
+
 export default {
+    components: {
+        Icon,
+    },
     setup() {
         const quantity = ref(0);
         const increment = () => {
@@ -32,6 +41,11 @@ export default {
             quantity.value--;
         };
 
+        watch(() => quantity.value, (newValue) => {
+            if (!newValue) {
+                quantity.value = 0;
+            }
+        })
         return {
             quantity,
             increment,
@@ -42,6 +56,10 @@ export default {
 </script>
 <style>
 /* Numeric input */
+input[type="number"] {
+    @apply text-slate-800 dark:text-slate-800 !important;
+}
+
 input[type="number"]::-webkit-inner-spin-button,
 input[type="number"]::-webkit-outer-spin-button {
     -webkit-appearance: none;
@@ -54,27 +72,6 @@ input[type="number"] {
     /* for iPad, iPhone Safari */
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
-}
-
-/* Example */
-.example {
-    @apply py-4 text-center;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
-
-    span {
-        @apply text-sm text-gray-400;
-    }
-
-    .centered-box {
-        @apply p-1 w-max my-0 mx-auto border-2 rounded-xl border-opacity-50 border-gray-800 mt-2;
-
-        span {
-            @apply text-sm text-gray-500;
-        }
-    }
 }
 </style>
 <!-- 
