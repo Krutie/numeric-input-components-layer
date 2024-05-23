@@ -1,7 +1,7 @@
 <template>
     <div class="py-4 text-center flex items-center justify-center flex-col">
-        <span class="block pb-2 font-mono">SFC Component</span>
-        <kbd class="block"> quantity: ref({{ quantity }}) </kbd>
+        <span class="pb-2 font-mono">SFC Component</span>
+        <pre> quantity: ref({{ quantity }}) </pre>
         <div class="grid grid-rows-2 grid-flow-col gap-0 p-2 text-center w-max my-0 mx-auto">
             <input type="number"
                    class="border-2 border-r-0 row-span-2 p-4 w-14 rounded-tl-lg rounded-bl-lg"
