@@ -8,7 +8,7 @@
       class="py-4 text-center flex items-center justify-center flex-col"
   >
       <span class="block pb-2">Renderless Component as an SFC (parent)</span>
-      <pre class="inline-block text-sm mb-3 bg-yellow-100 rounded"> quantity: {{ quantity }} </pre>
+      <UiPre> quantity: ref({{ quantity }}) </UiPre>
       <div class="centered-box">
           <!-- UI Bling -->
           <FunctionalInputAsSFC

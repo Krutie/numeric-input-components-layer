@@ -7,7 +7,7 @@
       v-slot="{ inputAttrs, input, increment, decrement, validation }"
   >
       <span class="block pb-2">Renderless Component as a Render Fn (parent) </span>
-      <pre class="inline-block text-sm mb-3 bg-yellow-100 rounded"> quantity: ref({{ quantity }}) </pre>
+      <UiPre> quantity: ref({{ quantity }}) </UiPre>
       <div class="centered-box">
           <!-- UI Bling -->
           <FunctionalInputAsRenderFn

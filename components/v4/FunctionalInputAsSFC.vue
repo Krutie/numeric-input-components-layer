@@ -1,12 +1,12 @@
 <template>
-    <div class="border border-teal-200 p-4 rounded-md"> 
-<div> Functional Input as an SFC (child) </div>
+    <div class="border border-teal-200/50 p-4 rounded-md"> 
+<div class="text-sm"> Functional Input as an SFC (child) </div>
   <div
       class="grid grid-rows-2 grid-flow-col p-2 text-center w-max my-0 mx-auto"
   >
       <input
           type="number"
-          class="row-span-2 p-4 w-14 bg-zinc-100 rounded-tl-lg rounded-bl-lg"
+          class="row-span-2 p-4 w-16 bg-zinc-100 rounded-tl-lg rounded-bl-lg"
           v-bind="$props.inputAttrs"
           @input="$props.inputEvents"
       />

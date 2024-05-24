@@ -1,7 +1,7 @@
 <template>
   <div class="py-4 text-center flex items-center justify-center flex-col">
       <span class="block pb-2">Render Function Component</span>
-      <pre class="inline-block text-sm mb-3 bg-yellow-100 rounded"> quantity: ref({{ quantity }}) </pre>
+      <UiPre> quantity: ref({{ quantity }}) </UiPre>
       <InputAsRenderFn v-model="quantity" :min="min" :max="max" />
   </div>
 </template>

@@ -1,10 +1,10 @@
 <template>
-    <div class="border border-orange-200 rounded-lg py-4 text-center flex items-center justify-center flex-col">
+    <div class="p-4 text-center flex items-center justify-center flex-col">
         <span class="pb-2">Reactive Input as an SFC</span>
-        <pre class="inline-block text-sm mb-3 bg-yellow-100 rounded"> quantity: ref({{ quantity }}) </pre>
+        <UiPre> quantity: ref({{ quantity }}) </UiPre>
         <div class="grid grid-flow-col p-2 mx-auto">
             <input type="number"
-                   class="row-span-2 p-4 w-14 bg-zinc-100 rounded-tl-lg rounded-bl-lg"
+                   class="row-span-2 p-4 w-16 bg-zinc-100 rounded-tl-lg rounded-bl-lg"
                    v-model="quantity" />
             <button type="button"
                     class="px-0.5 bg-orange-500 text-gray-50 rounded-tr-lg hover:opacity-80"
@@ -47,6 +47,9 @@ export default {
 </script>
 <style>
 /* Numeric input */
+input[type="number"] {
+    @apply text-slate-800 dark:text-slate-800 !important;
+}
 input[type="number"]::-webkit-inner-spin-button,
 input[type="number"]::-webkit-outer-spin-button {
     -webkit-appearance: none;

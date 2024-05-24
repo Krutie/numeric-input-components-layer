@@ -1,11 +1,11 @@
 <template>
-  <div class="border border-purple-200 rounded-lg py-4 text-center flex items-center justify-center flex-col">
+  <div class="p-4 text-center flex items-center justify-center flex-col">
       <span class="block pb-2">Reactive Input Component with Composable</span>
-      <pre class="inline-block text-sm mb-3 bg-yellow-100 rounded"> quantity: ref({{ quantity }}) </pre>
+      <UiPre> quantity: ref({{ quantity }}) </UiPre>
       <div class="grid grid-flow-col p-2 mx-auto">
           <input
               type="number"
-              class="row-span-2 p-4 w-14 bg-zinc-100 rounded-tl-lg rounded-bl-lg"
+              class="row-span-2 p-4 w-16 bg-zinc-100 rounded-tl-lg rounded-bl-lg"
               v-model.lazy="quantity"
           />
           <button
