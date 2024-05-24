@@ -42,23 +42,7 @@ export default {
             return { value: quantity.value };
         });
 
-        const validation = computed(() => {
-            if (quantity.value > props.max)
-                return {
-                    error: true,
-                    message: `Cannot select quantity more than ${props.max} at this point.`,
-                };
-            else if (quantity.value < props.min)
-                return {
-                    error: true,
-                    message: `Select at least ${props.min} quantity.`,
-                };
-            else
-                return {
-                    error: false,
-                    message: "",
-                };
-        });
+        const { validation } = useValidation({ value: quantity, min: props.min, max: props.max });
 
         watch(quantity, (newQ, oldQ) => {
             if (!newQ) {
