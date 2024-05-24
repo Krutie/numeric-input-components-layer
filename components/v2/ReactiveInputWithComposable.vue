@@ -31,7 +31,7 @@
 
 <script>
 import { ref } from "vue";
-import useNumericInput from "../composables/NumericInput";
+import useNumericInput from '../../composables/NumericInput'
 import { Icon } from '@iconify/vue';
 export default {
   components: {
