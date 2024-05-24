@@ -9,12 +9,16 @@
             <button type="button"
                     class="px-0.5 bg-orange-500 text-gray-50 rounded-tr-lg hover:opacity-80"
                     @click="increment">
-                    <Icon icon="ri-arrow-up-s-line" :ssr="true" class="text-xl"/>
+                <Icon icon="ri-arrow-up-s-line"
+                      :ssr="true"
+                      class="text-xl" />
             </button>
             <button type="button"
                     class="px-0.5 bg-orange-500 text-gray-50 rounded-br-lg hover:opacity-80"
                     @click="decrement">
-                <Icon icon="ri-arrow-down-s-line" :ssr="true" class="text-xl"/>
+                <Icon icon="ri-arrow-down-s-line"
+                      :ssr="true"
+                      class="text-xl" />
             </button>
         </div>
     </div>
@@ -37,6 +41,11 @@ export default {
             quantity.value--;
         };
 
+        watch(() => quantity.value, (newValue) => {
+            if (!newValue) {
+                quantity.value = 0;
+            }
+        })
         return {
             quantity,
             increment,
@@ -50,6 +59,7 @@ export default {
 input[type="number"] {
     @apply text-slate-800 dark:text-slate-800 !important;
 }
+
 input[type="number"]::-webkit-inner-spin-button,
 input[type="number"]::-webkit-outer-spin-button {
     -webkit-appearance: none;
