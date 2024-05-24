@@ -82,7 +82,7 @@ export default {
 
     return () => [
       h('div',
-        { class: "border border-blue-200/50 p-4 rounded-md text-sm" },
+        { class: "border border-blue-200/50 p-4 rounded-md" },
         ['Reactive Input As a Render Fn Component', NumericInput(), ErrorMessage()]
       )
     ]

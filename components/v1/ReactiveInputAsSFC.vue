@@ -1,6 +1,6 @@
 <template>
-    <div class="p-4 text-center flex items-center justify-center flex-col">
-        <span class="pb-2">Reactive Input as an SFC</span>
+    <div class="p-4 text-center flex items-center justify-center flex-col text-sm">
+        <span class="pb-2 font-bold">Reactive Input as an SFC</span>
         <UiPre> quantity: ref({{ quantity }}) </UiPre>
         <div class="grid grid-flow-col p-2 mx-auto">
             <input type="number"

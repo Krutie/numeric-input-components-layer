@@ -55,7 +55,7 @@ const FunctionalInputV2 = (props) => {
 
   return [
     h('div',
-      { class: "border border-rose-200/50 p-4 rounded-md text-sm" },
+      { class: "border border-rose-200/50 p-4 rounded-md" },
       ['Functional Input as a Render Fn Component (child)', NumericInput, ErrorMessage]
     )
   ]

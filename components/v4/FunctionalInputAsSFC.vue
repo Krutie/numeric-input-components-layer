@@ -1,6 +1,6 @@
 <template>
     <div class="border border-teal-200/50 p-4 rounded-md"> 
-<div class="text-sm"> Functional Input as an SFC (child) </div>
+<div> Functional Input as an SFC (child) </div>
   <div
       class="grid grid-rows-2 grid-flow-col p-2 text-center w-max my-0 mx-auto"
   >

@@ -6,7 +6,7 @@
       :max="max"
       v-slot="{ inputAttrs, input, increment, decrement, validation }"
   >
-      <span class="block pb-2">Renderless Component as a Render Fn (parent) </span>
+      <span class="pb-2 font-bold">Renderless Component as a Render Fn (parent) </span>
       <UiPre> quantity: ref({{ quantity }}) </UiPre>
       <div class="centered-box">
           <!-- UI Bling -->

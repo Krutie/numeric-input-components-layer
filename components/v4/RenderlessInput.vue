@@ -5,9 +5,9 @@
       :min="min"
       :max="max"
       v-slot="{ inputAttrs, inputEvt, increment, decrement, validation }"
-      class="py-4 text-center flex items-center justify-center flex-col"
+      class="py-4 text-center flex items-center justify-center flex-col text-sm"
   >
-      <span class="block pb-2">Renderless Component as an SFC (parent)</span>
+      <span class="pb-2 font-bold">Renderless Component as an SFC (parent)</span>
       <UiPre> quantity: ref({{ quantity }}) </UiPre>
       <div class="centered-box">
           <!-- UI Bling -->

@@ -55,7 +55,7 @@ export default {
     return () => [
       h('div',
         {
-          class: "py-4 text-center flex items-center justify-center flex-col"
+          class: "py-4 text-center flex items-center justify-center flex-col text-sm"
         },
         slots.default({
           decrement,
