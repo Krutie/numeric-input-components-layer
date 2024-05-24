@@ -1,4 +1,4 @@
-import { ref, computed, watch, h } from 'vue'
+import { h } from 'vue'
 import { Icon } from '@iconify/vue';
 
 const FunctionalInputV2 = (props) => {
@@ -47,11 +47,11 @@ const FunctionalInputV2 = (props) => {
   ]
 
   const NumericInput = h('div',
-    { class: "grid grid-rows-2 grid-flow-col p-2 text-center w-max my-0 mx-auto text-base" },
+    { class: "grid grid-rows-2 grid-flow-col p-2 text-center w-max my-0 mx-auto" },
     [inputElement(), buttons]
   )
 
-  const ErrorMessage = props.validation.error ? h('div', { class: 'text-red-400 text-base' }, props.validation.message) : null
+  const ErrorMessage = props.validation.error ? h('div', { class: 'text-red-400' }, props.validation.message) : null
 
   return [
     h('div',

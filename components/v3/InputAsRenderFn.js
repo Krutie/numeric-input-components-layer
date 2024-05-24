@@ -1,15 +1,5 @@
-import { ref, computed, watch, h } from 'vue'
+import { ref, computed, h } from 'vue'
 import { Icon } from '@iconify/vue';
-import useNumericInput from "../../composables/NumericInput";
-
-const min = 0;
-const max = 25;
-const gblQty = ref(min);
-const { increment, decrement, validation } = useNumericInput({
-  min,
-  max,
-  gblQty,
-});
 
 export default {
   props: {
@@ -23,25 +13,25 @@ export default {
       type: Number
     }
   },
-  setup(props) {
+  setup(props, { emit }) {
     const min = props.min
     const max = props.max
-    const quantity = ref(props.min);
+    const quantity = ref(props.modelValue)
+    const { validation } = useValidation({ value: quantity, min, max })
 
-    const { inputEvt, increment, decrement, validation } = useNumericInput({
-      min,
-      max,
-      quantity,
-    });
-
-    const inputElement = () => // this has to be a function for value: quantity.value, to be reactive
+    const inputElement = () => // this has to be a function to be reactive
       h('input', {
         id: 'input-field',
         type: 'number',
         class: "row-span-2 p-4 w-16 bg-zinc-100 rounded-l-lg",
-        name: props.modelValue,
-        value: quantity.value,
-        onInput: (e) => inputEvt(e)
+        value: props.modelValue,
+        modelValue: props.modelValue,
+        onInput: (event) => {
+          if (event.target.value) {
+            quantity.value = parseInt(event.target.value)
+            emit('update:modelValue', quantity.value)
+          }
+        },
       })
 
     const upArrow = h(Icon, {
@@ -59,13 +49,13 @@ export default {
         id: "btn-up",
         type: "button",
         class: "px-0.5 bg-blue-500 text-gray-100 rounded-tr-lg opacity-80 hover:opacity-100",
-        onClick: () => increment()
+        onClick: () => emit('update:modelValue', quantity.value++),
       }, upArrow),
       h('button', {
         id: "btn-down",
         type: "button",
         class: "px-0.5 bg-blue-500 text-gray-100 rounded-br-lg opacity-80 hover:opacity-100",
-        onClick: () => decrement()
+        onClick: () => emit('update:modelValue', quantity.value--),
       }, downArrow)
     ]
 
@@ -73,12 +63,12 @@ export default {
     const NumericInput = () => h('div',
       {
         id: 'wrapper-div',
-        class: 'grid grid-rows-2 grid-flow-col p-2 text-center w-max my-0 mx-auto text-base'
+        class: 'grid grid-rows-2 grid-flow-col p-2 text-center w-max my-0 mx-auto'
       },
-      [inputElement(), buttons]
+      [inputElement(), buttons, h('div', { class: 'col-span-2 text-sm text-gray-500' }, quantity)]
     )
 
-    const ErrorMessage = () => validation.value.error ? h('div', { class: 'text-red-400 text-base' }, validation.value.message) : null
+    const ErrorMessage = () => validation.value.error ? h('div', { class: 'text-red-400' }, validation.value.message) : null
 
     return () => [
       h('div',

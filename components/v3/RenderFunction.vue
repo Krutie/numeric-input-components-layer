@@ -1,26 +1,27 @@
 <template>
   <div class="py-4 text-center flex items-center justify-center flex-col text-sm">
-      <span class="pb-2 font-bold">Render Function Component</span>
-      <UiPre> quantity: ref({{ quantity }}) </UiPre>
-      <InputAsRenderFn v-model="quantity" :min="min" :max="max" />
+    <span class="pb-2 font-bold">Render Function Component</span>
+    <UiPre> quantity: ref({{ quantity }}) </UiPre>
+    <InputAsRenderFn :min="min"
+                     :max="max"
+                     v-model="quantity" />
   </div>
 </template>
 
 <script>
-import { ref } from "vue";
 import InputAsRenderFn from "./InputAsRenderFn";
 export default {
   components: { InputAsRenderFn },
   setup() {
-      const min = 0;
-      const max = 25;
-      const quantity = ref(min);
+    const min = 0;
+    const max = 25;
+    const quantity = ref(0);
 
-      return {
-          min,
-          max,
-          quantity,
-      };
+    return {
+      min,
+      max,
+      quantity,
+    };
   },
 };
 </script>
