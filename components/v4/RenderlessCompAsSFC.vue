@@ -2,18 +2,20 @@
     <div>
         <slot :increment="increment"
               :decrement="decrement"
-              :inputEvt="inputEvt"
-              :inputAttrs="inputAttrs"
-              :validation="validation" />
+              :onInput="onInput"
+              :inputValue="inputValue"
+              :validation="validation"
+              :quantity="quantity">
+        </slot>
     </div>
 </template>
 <script>
-import { ref, watch, h, computed } from "vue";
+import { ref, watch, computed } from "vue";
 export default {
     props: {
-        modelValue: {
-            type: Number,
-        },
+        // modelValue: {
+        //     type: Number,
+        // },
         min: {
             type: Number,
         },
@@ -26,19 +28,19 @@ export default {
         const quantity = ref(props.min);
         const increment = () => {
             quantity.value++;
-            emit("update:modelValue", quantity.value);
+            // emit("update:modelValue", quantity.value);
         };
         const decrement = () => {
             quantity.value--;
-            emit("update:modelValue", quantity.value);
+            // emit("update:modelValue", quantity.value);
         };
 
-        function inputEvt(e) {
+        function onInput(e) {
             quantity.value = parseInt(e.target.value);
-            emit("update:modelValue", quantity.value);
+            // emit("update:modelValue", quantity.value);
         }
 
-        const inputAttrs = computed(() => {
+        const inputValue = computed(() => {
             return { value: quantity.value };
         });
 
@@ -47,16 +49,17 @@ export default {
         watch(quantity, (newQ, oldQ) => {
             if (!newQ) {
                 quantity.value = 0;
-                emit("update:modelValue", 0);
+                // emit("update:modelValue", 0);
             }
         });
 
         return {
             increment,
             decrement,
-            inputAttrs,
-            inputEvt,
+            inputValue,
+            onInput,
             validation,
+            quantity
         };
     },
 };

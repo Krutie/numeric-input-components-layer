@@ -1,21 +1,28 @@
 <template>
     <!-- Logic comes from renderless component -->
-    <RenderlessCompAsSFC v-model="quantity"
-                         :min="min"
+    <RenderlessCompAsSFC :min="min"
                          :max="max"
-                         v-slot="{ inputAttrs, inputEvt, increment, decrement, validation }"
                          class="py-4 text-center flex items-center justify-center flex-col text-sm">
-        <span class="pb-2 font-bold">Renderless Component as an SFC (parent)</span>
-        <UiPre> quantity: ref({{ quantity }}) </UiPre>
-        <div class="centered-box">
-            <!-- UI Bling -->
-            <FunctionalInputAsSFC :decrement="decrement"
-                                  :increment="increment"
-                                  :inputAttrs="inputAttrs"
-                                  :inputEvents="inputEvt"
-                                  :validation="validation"
-                                  accent="teal" />
-        </div>
+        <template v-slot:default="{
+        inputValue,
+        onInput,
+        increment,
+        decrement,
+        validation,
+        quantity
+    }">
+            <span class="pb-2 font-bold">... Renderless Component as an SFC (parent)</span>
+            <UiPre> quantity: ref({{ quantity }}) </UiPre>
+            <div class="centered-box">
+                <!-- UI Bling -->
+                <FunctionalInputAsSFC :decrement="decrement"
+                                      :increment="increment"
+                                      :inputValue="inputValue"
+                                      :inputEvent="onInput"
+                                      :validation="validation"
+                                      accent="teal" />
+            </div>
+        </template>
     </RenderlessCompAsSFC>
 </template>
 
@@ -28,12 +35,12 @@ export default {
     setup() {
         const min = 0;
         const max = 25;
-        const quantity = ref(min);
+        // const quantity = ref(min);
         return {
-            quantity,
+            // quantity,
             min,
             max,
         };
     },
 };
-</script>./FunctionalInputAsSFC.vue./RenderlessCompAsSFC.vue
+</script>

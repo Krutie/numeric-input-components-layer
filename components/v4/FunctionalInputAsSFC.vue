@@ -4,8 +4,8 @@
         <div class="grid grid-rows-2 grid-flow-col p-2 text-center w-max my-0 mx-auto">
             <input type="number"
                    class="row-span-2 p-4 w-16 bg-zinc-100 rounded-tl-lg rounded-bl-lg"
-                   v-bind="$props.inputAttrs"
-                   @input="$props.inputEvents" />
+                   v-bind="$props.inputValue"
+                   @input="$props.inputEvent" />
             <button type="button"
                     class="px-0.5 text-gray-50 rounded-tr-lg hover:opacity-80"
                     :class="buttonAccent"
@@ -33,10 +33,10 @@
 import { Icon } from '@iconify/vue';
 export default {
     props: {
-        inputAttrs: {
+        inputValue: {
             type: Object,
         },
-        inputEvents: {
+        inputEvent: {
             type: Function,
         },
         increment: {
