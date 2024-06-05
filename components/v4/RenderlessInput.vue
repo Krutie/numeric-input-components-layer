@@ -35,9 +35,7 @@ export default {
     setup() {
         const min = 0;
         const max = 25;
-        // const quantity = ref(min);
         return {
-            // quantity,
             min,
             max,
         };

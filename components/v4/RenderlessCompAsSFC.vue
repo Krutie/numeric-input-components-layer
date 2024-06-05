@@ -13,9 +13,6 @@
 import { ref, watch, computed } from "vue";
 export default {
     props: {
-        // modelValue: {
-        //     type: Number,
-        // },
         min: {
             type: Number,
         },
@@ -23,21 +20,17 @@ export default {
             type: Number,
         },
     },
-    emits: ["update:modelValue"],
-    setup(props, { emit }) {
+    setup(props) {
         const quantity = ref(props.min);
         const increment = () => {
             quantity.value++;
-            // emit("update:modelValue", quantity.value);
         };
         const decrement = () => {
             quantity.value--;
-            // emit("update:modelValue", quantity.value);
         };
 
         function onInput(e) {
             quantity.value = parseInt(e.target.value);
-            // emit("update:modelValue", quantity.value);
         }
 
         const inputValue = computed(() => {
@@ -49,7 +42,6 @@ export default {
         watch(quantity, (newQ, oldQ) => {
             if (!newQ) {
                 quantity.value = 0;
-                // emit("update:modelValue", 0);
             }
         });
 
