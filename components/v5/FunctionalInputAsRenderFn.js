@@ -16,8 +16,8 @@ const FunctionalInputV2 = (props) => {
       id: 'input-field',
       type: 'number',
       class: "row-span-2 p-4 w-16 bg-zinc-100 rounded-tl-lg rounded-bl-lg",
-      onInput: (e) => props.inputEvents(e),
-      value: props.inputAttrs.value,
+      onInput: (e) => props.inputEvent(e),
+      value: props.inputValue.value,
       name: props.modelValue,
     })
 

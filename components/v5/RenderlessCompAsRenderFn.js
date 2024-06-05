@@ -1,9 +1,6 @@
 import { ref, watch, h, computed } from 'vue';
 export default {
   props: {
-    modelValue: {
-      type: Number
-    },
     min: {
       type: Number
     },
@@ -12,26 +9,23 @@ export default {
     }
   },
   emits: ['update:modelValue'],
-  setup(props, { emit, slots }) {
+  setup(props, { slots }) {
     const quantity = ref(props.min);
     const increment = () => {
       quantity.value++;
-      emit('update:modelValue', quantity.value);
     }
     const decrement = () => {
       quantity.value--;
-      emit('update:modelValue', quantity.value);
     }
     const { validation } = useValidation({ value: quantity, min: props.min, max: props.max });
 
-    const inputAttrs = computed(() => {
+    const inputValue = computed(() => {
       return { value: quantity.value };
     });
 
     watch(quantity, (newQ, oldQ) => {
       if (!newQ) {
         quantity.value = 0;
-        emit("update:modelValue", 0);
       }
     })
 
@@ -44,10 +38,10 @@ export default {
           decrement,
           increment,
           validation: validation.value, // dont forget the .value
-          inputAttrs: inputAttrs.value, // // dont forget the .value
+          inputValue: inputValue.value, // // dont forget the .value
+          quantity: quantity.value,
           input: (e) => {
             quantity.value = parseInt(e.target.value)
-            return emit('update:modelValue', quantity.value);
           },
         })
       )
